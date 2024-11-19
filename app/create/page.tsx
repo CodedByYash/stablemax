@@ -21,10 +21,10 @@ import { useToast } from "@/hooks/use-toast";
 const formSchema = z.object({
   prompt: z
     .string()
-    .min(7, { message: "Prompt must be be atleast 7 character long!" }),
+    .min(7, { message: "Prompt must be at least 7 characters long!" }),
 });
 
-export default function page() {
+export default function Page() {
   const [outputImg, setOutputImg] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const { toast } = useToast();
@@ -56,15 +56,16 @@ export default function page() {
       setLoading(false);
     }
   }
+
   return (
     <div className="w-full p-3 min-h-dvh h-full flex items-center justify-start pt-[72px] flex-col">
-      <div className="w-full  p-3">
+      <div className="w-full p-3">
         <h1 className="text-center font-bold text-white text-4xl">Create</h1>
         <p className="text-white/60 text-center">
           Generate Stunning Images from Text for FREE
         </p>
       </div>
-      <div className="flex  w-full gap-3 h-[calc(100dvh-200px)] md:flex-row flex-col ">
+      <div className="flex w-full gap-3 h-[calc(100dvh-200px)] md:flex-row flex-col">
         <div className="__form h-full flex-[2] gap-2 flex justify-center items-start flex-col">
           <p className="text-center lg:text-left w-full text-sm text-white/80">
             Type your prompt below to create any image you can imagine
@@ -98,7 +99,7 @@ export default function page() {
             </Form>
           </div>
         </div>
-        <div className="__output  min-h-[300px] lg:min-h-full lg:h-full flex-[1] bg-white/5 rounded-lg relative overflow-hidden">
+        <div className="__output min-h-[300px] lg:min-h-full lg:h-full flex-[1] bg-white/5 rounded-lg relative overflow-hidden">
           {outputImg ? (
             <Image
               alt="output"
@@ -108,11 +109,9 @@ export default function page() {
               className="w-full h-full object-contain"
             />
           ) : (
-            <>
-              <div className="w-full h-full items-center flex justify-center text-white/70 text-center p-3">
-                Enter your prompt and hit generate!
-              </div>
-            </>
+            <div className="w-full h-full items-center flex justify-center text-white/70 text-center p-3">
+              Enter your prompt and hit generate!
+            </div>
           )}
         </div>
       </div>
